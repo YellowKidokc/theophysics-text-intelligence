@@ -1,0 +1,63 @@
+﻿<!-- â•â•â• PAPER INTELLIGENCE TRANSPARENCY NOTICE â•â•â• -->
+<!-- Insert after <h1> and <p class="meta"> in both pipeline.py and generate_report.py -->
+
+<section class="pr-section-wrap" style="border-color:rgba(212,175,55,0.25); margin-bottom:2rem;">
+  <h3 style="color:var(--gold); margin-top:0;">
+    <i class="fas fa-shield-alt" style="margin-right:6px;"></i>Transparency Notice
+  </h3>
+  <p style="font-size:0.85rem; color:var(--text-dim); line-height:1.7; margin:0.8rem 0;">
+    This paper has been evaluated by the <strong style="color:var(--text);">Theophysics Paper Intelligence</strong> pipeline &mdash;
+    a deterministic, open-source scoring system distributed as a Docker container.
+    The pipeline performs automated analysis across multiple dimensions including coherence index (&chi;),
+    truth density, claim-support ratio, equation coverage, lexical and semantic Fruits alignment,
+    readability metrics, and Master Equation variable mapping.
+  </p>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1rem 0; font-size:0.8rem;">
+    <div style="border-left:2px solid var(--green); padding-left:12px;">
+      <div style="color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; font-size:0.65rem; margin-bottom:4px;">What these scores measure</div>
+      <div style="color:var(--text-dim); line-height:1.6;">
+        Structural properties of the text. High coherence = all ten Master Equation variables engaged.
+        High truth density = claims paired with evidence at a high ratio.
+        Neither score validates content. That remains the reader&rsquo;s work.
+      </div>
+    </div>
+    <div style="border-left:2px solid var(--red); padding-left:12px;">
+      <div style="color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; font-size:0.65rem; margin-bottom:4px;">What these scores do not measure</div>
+      <div style="color:var(--text-dim); line-height:1.6;">
+        Correctness of conclusions, theological validity, experimental replicability,
+        or domain-specific peer review. This is a structural audit, not a truth oracle.
+      </div>
+    </div>
+  </div>
+  <div style="background:var(--surface2); border:1px solid var(--border); border-radius:6px; padding:12px 14px; margin:1rem 0;">
+    <div style="font-size:0.75rem; color:var(--gold); font-family:'Oswald',sans-serif; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:6px;">
+      <i class="fas fa-flask" style="margin-right:4px;"></i>Reproducibility Guarantee
+    </div>
+    <p style="font-size:0.8rem; color:var(--text-dim); line-height:1.6; margin:0;">
+      This pipeline is deterministic. Given identical input, it produces identical output across runs,
+      machines, and operators. The Docker image, source code, and scoring methodology are publicly
+      available. You are invited&mdash;encouraged&mdash;to run this pipeline against this paper,
+      against any paper in this corpus, or against any paper from any source.
+    </p>
+  </div>
+  <details style="margin-top:0.8rem;">
+    <summary style="font-size:0.75rem; color:var(--text-muted); cursor:pointer; letter-spacing:0.5px;">
+      <i class="fas fa-exclamation-triangle" style="margin-right:4px; color:var(--orange);"></i>Known Limitations of This Run
+    </summary>
+    <ul style="font-size:0.78rem; color:var(--text-muted); line-height:1.8; margin:8px 0 0 16px; padding:0;">
+      <li>27 fine-grained emotion categories (GoEmotions/NRC) returned incomplete due to model unavailability. Affected sections are marked rather than populated with zeros.</li>
+      <li>Equation counts include inline mathematical notation and may overcount relative to distinct formal statements.</li>
+      <li>Formal verification against the axiom spine, Master Equation, Lagrangian, and Lean proofs requires a separate workflow not included in this scoring pass.</li>
+      <li>Counterargument detection identifies explicit rebuttal language only; structural objections embedded in argument flow may not be counted.</li>
+    </ul>
+  </details>
+  <div style="margin-top:0.8rem; display:flex; gap:8px; flex-wrap:wrap;">
+    <a class="qa-btn" href="https://github.com/YellowKidokc/paper-proof-grader" target="_blank" style="text-decoration:none;">
+      <i class="fas fa-code-branch"></i> Source &amp; Docker
+    </a>
+    <a class="qa-btn" href="https://theophysics.pro" target="_blank" style="text-decoration:none;">
+      <i class="fas fa-flask"></i> Theophysics
+    </a>
+  </div>
+</section>
+

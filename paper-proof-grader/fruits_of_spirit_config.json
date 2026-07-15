@@ -1,0 +1,9 @@
+﻿{
+    "truth_engine_root":  "\\\\dlowenas\\github\\Truth Engine (1)",
+    "default_output":  "\\\\dlowenas\\brain\\00_WORKFLOWS\\paper-proof-grader\\OUTPUT\\fruits_of_spirit",
+    "fruits_template":  "\\\\dlowenas\\github\\Truth Engine (1)\\Fruits Template.xlsx",
+    "public_label_mode":  true,
+    "semantic_anchor_backend":  "auto",
+    "semantic_vector_dimensions":  2048
+}
+
