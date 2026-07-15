@@ -4,6 +4,66 @@ A research-grade text intelligence platform for analyzing individual articles, a
 
 The system is not intended to produce a single opaque grade. It generates a traceable editorial, linguistic, academic, argumentative, narrative, SEO, cross-document, and Theophysics-specific diagnosis.
 
+## Current usable engine
+
+The engine currently provides:
+
+- deterministic Markdown-aware segmentation;
+- canonical document, section, paragraph, sentence, and evidence models;
+- structural document measurements;
+- lexical diversity including TTR variants, MATTR, hapax/dislegomena, Yule's K, and content-word recurrence;
+- repeated bigram, trigram, and four-gram extraction;
+- Flesch, Flesch-Kincaid, Gunning Fog, ARI, sentence burden, and complex-word measurements;
+- opening-hook diagnosis with quoted passage evidence;
+- explicit-thesis-position detection;
+- conclusion-closure diagnosis;
+- explainable paragraph-role classification and article progression sequences;
+- explicit promise extraction and a first-pass promise-to-delivery ledger;
+- provenance-rich JSON reports;
+- a self-contained dark/gold flagship HTML report;
+- regression tests for strong and weak article structures.
+
+Every major judgment records its method, scope, confidence, limitations, passage evidence, and revision action.
+
+## Install for development
+
+```bash
+python -m pip install -e ".[test]"
+```
+
+Install optional NLP libraries:
+
+```bash
+python -m pip install -e ".[nlp,test]"
+```
+
+## Analyze a document
+
+```bash
+tti path/to/article.md
+```
+
+This writes both:
+
+```text
+article.intelligence.json
+article.intelligence.html
+```
+
+Choose report locations explicitly:
+
+```bash
+tti article.md --output reports/article.json --html reports/article.html
+```
+
+Open the HTML file in any browser. It includes the article progression, editorial diagnoses, exact evidence passages, revision actions, the full metric ledger, and the embedded machine-readable payload.
+
+## Run tests
+
+```bash
+pytest
+```
+
 ## Product goal
 
 Given a document or series, the platform should answer:
@@ -28,44 +88,6 @@ Given a document or series, the platform should answer:
 7. **Legacy scripts are preserved before migration.**
 8. **The report is the primary product; metrics serve the report.**
 
-## Current usable slice
-
-The repository now contains a working first engine:
-
-- deterministic Markdown-aware segmentation;
-- canonical document, section, paragraph, sentence, and evidence models;
-- 15 structural and lexical measurements;
-- opening-hook diagnosis with quoted passage evidence;
-- explicit-thesis-position detection;
-- conclusion-closure diagnosis;
-- provenance-rich JSON reports;
-- command-line execution;
-- regression tests for strong and weak article openings.
-
-### Install for development
-
-```bash
-python -m pip install -e ".[test]"
-```
-
-### Analyze a document
-
-```bash
-tti path/to/article.md
-```
-
-Or choose the report location:
-
-```bash
-tti path/to/article.md --output output/article-report.json
-```
-
-### Run tests
-
-```bash
-pytest
-```
-
 ## Planned analysis profiles
 
 - Academic research paper
@@ -77,7 +99,7 @@ pytest
 - Technical documentation
 - Canonical Theophysics page
 
-## Report layers
+## Report roadmap
 
 1. Executive editorial verdict
 2. Hook and opening analysis
@@ -95,9 +117,5 @@ pytest
 14. Full metric ledger with provenance
 
 See [`docs/REPORT_SPECIFICATION.md`](docs/REPORT_SPECIFICATION.md) for the report contract.
-
-## Development strategy
-
-The first milestone is a canonical document model shared by all analyzers. Existing scripts will be placed under `legacy/` unchanged and then migrated module by module with regression tests.
 
 The initial implementation target is approximately 100 dependable metrics. The long-term registry may contain 450–650 distinct metrics, with a context-appropriate subset active for each document profile.
