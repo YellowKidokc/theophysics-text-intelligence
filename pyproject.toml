@@ -28,7 +28,7 @@ test = [
 ]
 
 [project.scripts]
-tti = "text_intelligence.cli:app"
+tti = "text_intelligence.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/text_intelligence"]
