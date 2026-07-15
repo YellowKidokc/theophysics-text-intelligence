@@ -1,12 +1,18 @@
-"""Public orchestration API for the first usable text-intelligence engine."""
-
+"""Public orchestration API for the text-intelligence engine."""
 from __future__ import annotations
 
 from pathlib import Path
 
 from pydantic import BaseModel, ConfigDict
 
-from text_intelligence.analyzers import editorial, structural
+from text_intelligence.analyzers import (
+    editorial,
+    lexical,
+    paragraph_roles,
+    promises,
+    readability,
+    structural,
+)
 from text_intelligence.core.models import Document, MetricObservation
 from text_intelligence.core.segmentation import parse_document
 
@@ -23,7 +29,14 @@ class AnalysisResult(BaseModel):
 
 def analyze_text(text: str, *, source: str = "inline", title: str | None = None) -> AnalysisResult:
     document = parse_document(text=text, source=source, title=title)
-    metrics = [*structural.analyze(document), *editorial.analyze(document)]
+    metrics = [
+        *structural.analyze(document),
+        *lexical.analyze(document),
+        *readability.analyze(document),
+        *editorial.analyze(document),
+        *paragraph_roles.analyze(document),
+        *promises.analyze(document),
+    ]
     return AnalysisResult(document=document, metrics=tuple(metrics))
 
 
