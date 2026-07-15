@@ -6,15 +6,19 @@ from pathlib import Path
 from pydantic import BaseModel, ConfigDict
 
 from text_intelligence.analyzers import (
+    argumentation,
+    coherence,
     editorial,
     lexical,
     paragraph_roles,
     promises,
     readability,
+    seo,
     structural,
 )
 from text_intelligence.core.models import Document, MetricObservation
 from text_intelligence.core.segmentation import parse_document
+from text_intelligence.scoring import profiles
 
 
 class AnalysisResult(BaseModel):
@@ -36,7 +40,11 @@ def analyze_text(text: str, *, source: str = "inline", title: str | None = None)
         *editorial.analyze(document),
         *paragraph_roles.analyze(document),
         *promises.analyze(document),
+        *seo.analyze(document),
+        *coherence.analyze(document),
+        *argumentation.analyze(document),
     ]
+    metrics.extend(profiles.analyze(document, metrics))
     return AnalysisResult(document=document, metrics=tuple(metrics))
 
 
