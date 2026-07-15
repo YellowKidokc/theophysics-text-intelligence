@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "theophysics-text-intelligence"
+version = "0.1.0"
+description = "Report-first, passage-grounded text intelligence for articles, papers, and Theophysics corpora."
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "David Lowe"}]
+dependencies = [
+  "pydantic>=2.8,<3",
+  "typer>=0.12,<1",
+  "rich>=13.7,<14",
+]
+
+[project.optional-dependencies]
+nlp = [
+  "spacy>=3.7,<4",
+  "textstat>=0.7.4,<1",
+  "lexicalrichness>=0.5.1,<1",
+]
+test = [
+  "pytest>=8.2,<9",
+  "pytest-cov>=5,<6",
+]
+
+[project.scripts]
+tti = "text_intelligence.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/text_intelligence"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
