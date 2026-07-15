@@ -19,9 +19,13 @@ The engine currently provides:
 - conclusion-closure diagnosis;
 - explainable paragraph-role classification and article progression sequences;
 - explicit promise extraction and a first-pass promise-to-delivery ledger;
+- title length, title/body agreement, heading hierarchy, duplicate-heading, and question-heading diagnostics;
+- paragraph-transition continuity, abrupt-boundary detection, and explicit-transition measurements;
+- candidate extraction for claims, evidence, assumptions, objections, and responses;
+- provisional Substack, academic-research, and SEO-information profile scores with visible component weights;
 - provenance-rich JSON reports;
-- a self-contained dark/gold flagship HTML report;
-- regression tests for strong and weak article structures.
+- a self-contained dark/gold flagship HTML report with sticky family navigation;
+- regression tests for article structure, SEO, argument signals, profile scores, and report output.
 
 Every major judgment records its method, scope, confidence, limitations, passage evidence, and revision action.
 
@@ -56,7 +60,11 @@ Choose report locations explicitly:
 tti article.md --output reports/article.json --html reports/article.html
 ```
 
-Open the HTML file in any browser. It includes the article progression, editorial diagnoses, exact evidence passages, revision actions, the full metric ledger, and the embedded machine-readable payload.
+Open the HTML file in any browser. It includes the article progression, editorial diagnoses, exact evidence passages, revision actions, profile-fit cards, navigable metric families, and the embedded machine-readable payload.
+
+## Profile-score warning
+
+The three profile scores are deliberately provisional. They expose their component metrics and weights, but they are not calibrated against David's human grading dataset yet. They measure article-profile fit, not truth, originality, or publication acceptance.
 
 ## Run tests
 
